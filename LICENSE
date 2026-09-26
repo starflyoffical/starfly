@@ -1,0 +1,136 @@
+# Roam Control Source-Available License
+
+Copyright 2026 Sean Howarth. All rights reserved.
+
+This license applies to Roam Control source code and other materials made
+available under these terms.
+
+## 1. Permission to View and Study
+
+You may access, download, view, and study the source code for personal,
+non-commercial purposes.
+
+## 2. Personal Use
+
+You may build and use Roam Control privately for your own personal,
+non-commercial use.
+
+## 3. Private Modification
+
+You may modify Roam Control for your own private, personal, non-commercial
+use and may build and use those modifications yourself.
+
+This permission does not include permission to distribute, publish, sublicense,
+share, or otherwise make Roam Control or modified versions available to
+another person.
+
+## 4. Contributions to Roam Control
+
+You may prepare modifications for the purpose of proposing them to the
+official Roam Control project through its designated contribution process.
+
+Submission and acceptance of contributions are subject to the project's
+separate contribution terms.
+
+Permission to prepare or submit a contribution does not grant permission to
+distribute that modification independently.
+
+## 5. No Redistribution
+
+Except where expressly permitted by these terms or required by applicable law,
+you may not distribute, publish, sublicense, share, mirror, host, provide,
+transfer, or otherwise make available to another person:
+
+- Roam Control source code;
+- compiled versions of Roam Control;
+- installation packages or application binaries;
+- modified or derivative versions of Roam Control; or
+- patches, diffs, or other modifications derived from Roam Control.
+
+No permission is granted to provide unofficial releases, alternative downloads,
+mirrors, redistributed builds, or independently published or maintained public
+forks of Roam Control.
+
+Prior written permission from the copyright holder is required for any such
+distribution or publication.
+
+## 6. Commercial Use
+
+No commercial use of Roam Control is permitted under this license.
+
+Commercial use requires separate prior written permission from the copyright
+holder.
+
+## 7. No Sublicensing or Transfer
+
+You may not sublicense or transfer the permissions granted under these terms
+to another person or entity.
+
+## 8. Ownership and Reserved Rights
+
+Roam Control is licensed, not sold.
+
+Copyright and all other rights not expressly granted by these terms remain
+with their respective copyright holders.
+
+Nothing in these terms transfers ownership of Roam Control or grants any
+right to distribute Roam Control except as expressly stated.
+
+## 9. Third-Party Software
+
+Third-party software included with or used by Roam Control remains subject to
+its own copyright and license terms. These terms do not replace, restrict, or
+override rights granted by third-party licenses.
+
+## 10. Roam Control 0.9.0 Beta 1 / Build 29
+
+Roam Control 0.9.0 Beta 1 / Build 29 was originally released under the MIT
+License.
+
+Nothing in these terms revokes, limits, or alters rights already granted for
+that release under the MIT License.
+
+The original MIT license is preserved in Documentation/Licensing/LICENSE-BETA1-MIT, and the
+v0.9.0-beta.1 Git tag identifies the corresponding source.
+
+Code that formed part of that release remains available under the MIT License
+when used under the terms of that release. Later changes are not offered under
+the MIT License unless explicitly stated.
+
+## 11. Hosting Platform Rights
+
+These terms do not restrict rights that must be granted to a hosting platform
+under that platform's terms of service solely as necessary to host and provide
+access to this repository.
+
+Where a hosting platform's terms necessarily permit users to use built-in
+functionality such as viewing or forking a public repository, those platform
+rights apply only to the extent required by the platform's terms.
+
+They do not grant permission under this license to independently publish,
+maintain, distribute, release, or otherwise make available Roam Control or a
+modified version of Roam Control.
+
+## 12. Termination
+
+Your permissions under these terms end automatically if you materially breach
+them.
+
+If the breach is capable of being remedied, the copyright holder may choose
+to restore permission after the breach has been corrected.
+
+## 13. No Warranty
+
+To the extent permitted by law, Roam Control is provided "as is", without
+warranties or conditions of any kind.
+
+The copyright holder will not be liable for loss or damages arising from use
+of Roam Control to the extent permitted by applicable law.
+
+## 14. Other Permissions
+
+The copyright holder may grant additional or different permissions separately
+in writing.
+
+Those permissions apply only to the person or entity to whom they are granted
+and do not change these terms for anyone else.
