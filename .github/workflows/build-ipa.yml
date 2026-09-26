@@ -1,0 +1,85 @@
+name: 建置未簽署 IPA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build-ipa:
+    name: 建置未簽署 IPA
+    runs-on: macos-15
+    steps:
+      - name: 取得程式碼
+        uses: actions/checkout@v4
+
+      - name: 選擇 Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: 檢查 Xcode 專案與共享 Scheme
+        run: |
+          set -euo pipefail
+          xcodebuild -list -project RoamControl.xcodeproj
+          test -f RoamControl.xcodeproj/xcshareddata/xcschemes/RoamControl.xcscheme
+
+      - name: 執行原始碼與 Live Activity 檢查
+        run: |
+          set -euo pipefail
+          python3 scripts/test-release-invariants.py
+          python3 scripts/test-background-session.py
+          python3 scripts/test-background-task-identifiers.py
+          python3 scripts/test-failure-stages.py
+          python3 scripts/test-failure-telemetry.py
+
+      - name: 建置 Release 封存檔（未簽署）
+        id: archive
+        run: |
+          set -euo pipefail
+          mkdir -p "$GITHUB_WORKSPACE/artifacts"
+          xcodebuild \
+            -project RoamControl.xcodeproj \
+            -scheme RoamControl \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/StarFly.xcarchive" \
+            archive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            2>&1 | tee "$GITHUB_WORKSPACE/artifacts/xcodebuild.log"
+
+      - name: 上傳 Xcode 失敗記錄
+        if: failure() && steps.archive.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: StarFly-xcodebuild-log
+          path: artifacts/xcodebuild.log
+          if-no-files-found: error
+
+      - name: 封裝 IPA
+        run: |
+          set -euo pipefail
+          APP="$RUNNER_TEMP/StarFly.xcarchive/Products/Applications/StarFly.app"
+          test -d "$APP"
+          test -d "$APP/PlugIns/StarFlyLiveActivity.appex"
+          mkdir -p "$RUNNER_TEMP/Payload"
+          cp -R "$APP" "$RUNNER_TEMP/Payload/"
+          mkdir -p "$GITHUB_WORKSPACE/artifacts"
+          cd "$RUNNER_TEMP"
+          /usr/bin/zip -qry -X "$GITHUB_WORKSPACE/artifacts/StarFly-unsigned.ipa" Payload
+          python3 "$GITHUB_WORKSPACE/scripts/test-ipa-structure.py" \
+            "$GITHUB_WORKSPACE/artifacts/StarFly-unsigned.ipa"
+          shasum -a 256 "$GITHUB_WORKSPACE/artifacts/StarFly-unsigned.ipa" \
+            > "$GITHUB_WORKSPACE/artifacts/StarFly-unsigned.ipa.sha256"
+
+      - name: 上傳 IPA 成品
+        uses: actions/upload-artifact@v4
+        with:
+          name: StarFly-unsigned-IPA
+          path: |
+            artifacts/StarFly-unsigned.ipa
+            artifacts/StarFly-unsigned.ipa.sha256
+          if-no-files-found: error
