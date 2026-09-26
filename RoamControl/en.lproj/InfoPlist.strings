@@ -1,0 +1,2 @@
+"NSHealthShareUsageDescription" = "StarFly reads the step records you allow so you can review and delete them individually. It does not read steps from other sources.";
+"NSHealthUpdateUsageDescription" = "After you confirm, StarFly adds the steps you enter to Apple Health and labels them as StarFly records.";

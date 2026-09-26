@@ -1,0 +1,5 @@
+// Safe public defaults. A checkout builds without the repository owner's
+// Apple development team.
+DEVELOPMENT_TEAM =
+
+#include? "Local.private.xcconfig"

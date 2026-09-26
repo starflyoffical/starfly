@@ -1,0 +1,2 @@
+// Optional local signing configuration. This file is ignored by Git.
+DEVELOPMENT_TEAM = YOUR-APPLE-DEVELOPMENT-TEAM-ID
